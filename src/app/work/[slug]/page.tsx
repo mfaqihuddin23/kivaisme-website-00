@@ -1,16 +1,42 @@
-import { Link, useParams } from "react-router-dom";
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 
 import { Badge, PixelWindow } from "@/components/portfolio/PixelWindow";
-import { getNextProject, getProject } from "@/data/projects";
-import { NotFoundPage } from "@/pages/NotFoundPage";
+import { getNextProject, getProject, projects } from "@/data/projects";
 
-export function CaseStudyPage() {
-  const { slug } = useParams<{ slug: string }>();
-  const project = slug ? getProject(slug) : undefined;
-  const next = slug ? getNextProject(slug) : undefined;
+type CaseStudyProps = {
+  params: Promise<{ slug: string }>;
+};
 
-  if (!slug || !project || !next) {
-    return <NotFoundPage />;
+export function generateStaticParams() {
+  return projects.map((p) => ({ slug: p.slug }));
+}
+
+export async function generateMetadata({ params }: CaseStudyProps): Promise<Metadata> {
+  const { slug } = await params;
+  const project = getProject(slug);
+  if (!project) return {};
+
+  return {
+    title: project.title,
+    description: project.summary,
+    openGraph: {
+      title: project.title,
+      description: project.summary,
+      type: "article",
+    },
+  };
+}
+
+export default async function CaseStudyPage({ params }: CaseStudyProps) {
+  const { slug } = await params;
+  const project = getProject(slug);
+  const next = getNextProject(slug);
+
+  if (!project || !next) {
+    notFound();
   }
 
   return (
@@ -18,7 +44,7 @@ export function CaseStudyPage() {
       <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
         <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3 md:px-6">
           <Link
-            to="/#work"
+            href="/#work"
             className="min-w-0 truncate font-mono text-[11px] uppercase tracking-widest text-muted-foreground hover:text-primary"
           >
             [ ← Back to Portfolio ]
@@ -65,11 +91,12 @@ export function CaseStudyPage() {
           bodyClassName="p-0"
           accent
         >
-          <img
+          <Image
             src={project.image}
             alt={`${project.title} browser mockup`}
             width={1024}
             height={768}
+            preload
             className="pixelated w-full object-cover contrast-125"
           />
         </PixelWindow>
@@ -125,10 +152,9 @@ export function CaseStudyPage() {
           <div className="mt-5 grid gap-4 md:grid-cols-2">
             {project.gallery.map((g) => (
               <PixelWindow key={g.caption} title={g.caption} bodyClassName="p-0">
-                <img
+                <Image
                   src={g.src}
                   alt={g.caption}
-                  loading="lazy"
                   width={1024}
                   height={768}
                   className="pixelated w-full object-cover contrast-125 saturate-75"
@@ -155,7 +181,7 @@ export function CaseStudyPage() {
         </section>
 
         <Link
-          to={`/work/${next.slug}`}
+          href={`/work/${next.slug}`}
           className="mt-16 block border border-border bg-card p-6 transition-colors hover:border-primary"
         >
           <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">

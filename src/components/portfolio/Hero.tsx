@@ -1,4 +1,7 @@
+"use client";
+
 import { useEffect, useState } from "react";
+
 import { PixelWindow } from "./PixelWindow";
 
 const lines = [
@@ -43,13 +46,12 @@ export function Hero() {
             // frontend · webflow · shopify
           </p>
           <h1 className="text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-            Crafting Pixel-Perfect{" "}
-            <span className="text-primary">Webflow &amp; Shopify</span>{" "}
+            Crafting Pixel-Perfect <span className="text-primary">Webflow &amp; Shopify</span>{" "}
             Experiences.
           </h1>
           <p className="mt-5 max-w-xl text-base text-muted-foreground">
-            Frontend, Webflow, and Shopify Liquid Developer specializing in
-            high-converting, custom web experiences.
+            Frontend, Webflow, and Shopify Liquid Developer specializing in high-converting, custom
+            web experiences.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a

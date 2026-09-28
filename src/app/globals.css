@@ -1,5 +1,5 @@
 @import "tailwindcss" source(none);
-@source "../src";
+@source "../";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -226,25 +226,44 @@ html {
 }
 
 @keyframes blink-pixel {
-  0%, 49% { opacity: 1; }
-  50%, 100% { opacity: 0.15; }
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0.15;
+  }
 }
 @utility animate-blink {
   animation: blink-pixel 1.1s steps(1) infinite;
 }
 
 @keyframes caret {
-  0%, 49% { opacity: 1; }
-  50%, 100% { opacity: 0; }
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
 }
 @utility animate-caret {
   animation: caret 0.9s steps(1) infinite;
 }
 
 @keyframes heartbeat-pixel {
-  0%, 100% { transform: scale(1); }
-  20% { transform: scale(1.25); }
-  40% { transform: scale(1); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.25);
+  }
+  40% {
+    transform: scale(1);
+  }
 }
 @utility animate-heart {
   animation: heartbeat-pixel 1.4s ease-in-out infinite;

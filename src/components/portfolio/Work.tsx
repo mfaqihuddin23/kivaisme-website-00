@@ -1,5 +1,9 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+
 import { projects } from "@/data/projects";
 import { Badge, PixelWindow, SectionTitle } from "./PixelWindow";
 
@@ -7,9 +11,7 @@ const filters = ["All", "Webflow", "Shopify", "Frontend"] as const;
 
 export function Work() {
   const [filter, setFilter] = useState<(typeof filters)[number]>("All");
-  const visible = projects.filter(
-    (p) => filter === "All" || p.categories.includes(filter),
-  );
+  const visible = projects.filter((p) => filter === "All" || p.categories.includes(filter));
 
   return (
     <section id="work" className="border-b border-border">
@@ -41,12 +43,12 @@ export function Work() {
               className={i === 0 ? "md:col-span-2" : ""}
             >
               <div className="group overflow-hidden border-b border-border">
-                <img
+                <Image
                   src={p.image}
                   alt={`${p.title} preview`}
-                  loading="lazy"
                   width={1024}
                   height={768}
+                  sizes="(min-width: 768px) 50vw, 100vw"
                   className="pixelated aspect-[4/3] w-full object-cover contrast-125 saturate-50 transition-all duration-300 group-hover:scale-[1.03] group-hover:saturate-150 md:aspect-[16/9]"
                 />
               </div>
@@ -58,11 +60,9 @@ export function Work() {
                 </div>
                 <h3 className="text-xl font-bold">{p.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{p.summary}</p>
-                <p className="mt-3 font-mono text-xs text-primary">
-                  ▸ {p.metric}
-                </p>
+                <p className="mt-3 font-mono text-xs text-primary">▸ {p.metric}</p>
                 <Link
-                  to={`/work/${p.slug}`}
+                  href={`/work/${p.slug}`}
                   className="mt-5 inline-block border border-border px-4 py-2 font-mono text-[11px] uppercase tracking-widest text-foreground transition-colors hover:border-primary hover:text-primary"
                 >
                   [ Read Case Study → ]

@@ -7,7 +7,7 @@ import { Services } from "@/components/portfolio/Services";
 import { Stack } from "@/components/portfolio/Stack";
 import { Work } from "@/components/portfolio/Work";
 
-export function HomePage() {
+export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />

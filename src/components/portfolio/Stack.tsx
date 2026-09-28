@@ -58,9 +58,7 @@ export function Stack() {
                     <span
                       key={i}
                       className={`h-3 flex-1 ${
-                        i < Math.round((parseInt(m.exp) / 99) * 12)
-                          ? "bg-primary"
-                          : "bg-secondary"
+                        i < Math.round((parseInt(m.exp) / 99) * 12) ? "bg-primary" : "bg-secondary"
                       }`}
                     />
                   ))}

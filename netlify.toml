@@ -1,12 +1,10 @@
 [build]
   command = "npm run build"
-  publish = "dist"
 
 [build.environment]
   NODE_VERSION = "20"
 
-# SPA fallback: serve index.html for client-side routes like /work/:slug
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# Next.js runtime: @netlify/next (installed as a dev dependency) is picked up
+# automatically, so no SPA fallback rewrite is needed.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"

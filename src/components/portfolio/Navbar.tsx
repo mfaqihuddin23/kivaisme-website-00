@@ -1,5 +1,7 @@
+"use client";
+
+import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
 const links = [
   { href: "#work", label: "work" },
@@ -20,12 +22,12 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
       <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 md:px-6 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
-        <Link to="/" className="flex min-w-0 items-center gap-3">
+        <Link href="/" className="flex min-w-0 items-center gap-3">
           <span className="grid h-8 w-8 shrink-0 place-items-center border border-primary bg-primary/15 font-mono text-xs text-primary animate-blink">
             ▮▮
           </span>
           <span className="pixel-swap truncate font-mono text-sm font-bold uppercase tracking-widest">
-            kiva.dev
+            kivaisme
           </span>
         </Link>
 

@@ -4,6 +4,36 @@ Build a modern, high-converting, single-page developer portfolio with a dynamic 
 
 ---
 
+### ⚙️ TECH STACK
+
+- **Framework:** Next.js 16 (App Router, React 19, TypeScript)
+- **Styling:** Tailwind CSS v4 (PostCSS plugin) + `tw-animate-css`
+- **Components:** shadcn/ui (Radix UI primitives) in `src/components/ui`
+- **Images:** `next/image` with the built-in optimizer
+- **Routing:** file-system based — `src/app/page.tsx`, `src/app/work/[slug]/page.tsx`, `src/app/not-found.tsx` (no `react-router-dom`)
+- **Deploy:** Netlify with the Next.js runtime (`@netlify/next` + `@netlify/plugin-nextjs`)
+
+```
+src/
+├── app/                     # App Router: layout, pages, global CSS
+│   ├── layout.tsx           # <html>/<body>, metadata, font links
+│   ├── page.tsx             # `/` — single-page portfolio
+│   ├── not-found.tsx        # 404
+│   ├── work/[slug]/page.tsx # `/work/:slug` — SSG via generateStaticParams
+│   └── globals.css          # Tailwind theme, pixel utilities
+├── components/portfolio/    # Sections (Hero, Work, Stack, Services, …)
+├── components/ui/           # shadcn/ui primitives
+├── data/projects.ts         # Case study content
+├── assets/                  # Images imported as StaticImageData
+├── hooks/                   # e.g. useIsMobile
+└── lib/utils.ts             # cn() helper
+```
+
+Interactive pieces (Hero typewriter, Work filters, Playground cart, Navbar toggles) are
+client components marked with `"use client"`; everything else renders on the server.
+
+---
+
 ### 🎨 DESIGN & AESTHETIC SYSTEM
 
 - **Style:** Dark mode UI with crisp, modern typography paired with 8-bit/pixelated UI accents (retro window headers, pixelated badge tags, high-contrast borders).
@@ -140,11 +170,20 @@ Continue developing this project in the [Lovable editor](https://lovable.dev/pro
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Prefer working locally? You need Node.js (20+) and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
 ```sh
 git clone <this-repository-url>
-cd <repository-name>
+cd kivaisme-web-00
 npm i
 npm run dev
 ```
+
+| Script           | What it does                                 |
+| ---------------- | -------------------------------------------- |
+| `npm run dev`    | Next.js dev server on http://localhost:3000  |
+| `npm run build`  | Production build (prerenders every route)    |
+| `npm start`      | Serves the production build                  |
+| `npm run lint`   | ESLint (Next.js + TypeScript + Prettier)     |
+| `npm run format` | Prettier write over the repo                 |
+

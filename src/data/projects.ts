@@ -1,3 +1,5 @@
+import type { StaticImageData } from "next/image";
+
 import p1 from "@/assets/project-1.jpg";
 import p2 from "@/assets/project-2.jpg";
 import p3 from "@/assets/project-3.jpg";
@@ -14,14 +16,14 @@ export type Project = {
   badges: string[];
   metric: string;
   summary: string;
-  image: string;
+  image: StaticImageData;
   liveUrl: string;
   challenge: string[];
   execution: { title: string; body: string }[];
   code: { label: string; lang: string; body: string };
   lighthouse: { label: string; score: number }[];
   results: { value: string; label: string }[];
-  gallery: { src: string; caption: string }[];
+  gallery: { src: StaticImageData; caption: string }[];
 };
 
 export const projects: Project[] = [

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import avatar from "@/assets/avatar.jpg";
 import { PixelWindow, SectionTitle } from "./PixelWindow";
 
@@ -22,20 +24,18 @@ export function About() {
         <SectionTitle>// 04. ABOUT_&amp;_EXPERIENCE</SectionTitle>
         <div className="grid gap-6 lg:grid-cols-2">
           <PixelWindow title="operator.png" bodyClassName="p-0">
-            <img
+            <Image
               src={avatar}
               alt="Pixel art avatar of the developer"
-              loading="lazy"
               width={768}
               height={768}
               className="pixelated aspect-square w-full object-cover contrast-125"
             />
             <div className="border-t border-border p-5">
               <p className="text-sm text-muted-foreground">
-                I'm Faqih — a frontend developer who builds marketing sites and
-                storefronts that load fast, convert well, and stay editable by
-                the people who own them. Six years, three continents worth of
-                clients, zero abandoned handovers.
+                I&apos;m Faqih — a frontend developer who builds marketing sites and storefronts
+                that load fast, convert well, and stay editable by the people who own them. Six
+                years, three continents worth of clients, zero abandoned handovers.
               </p>
             </div>
           </PixelWindow>
@@ -55,9 +55,7 @@ export function About() {
             <div className="grid grid-cols-2 gap-4">
               {stats.map((s) => (
                 <div key={s.l} className="pixel-border bg-card p-4">
-                  <p className="pixel-swap text-2xl font-bold text-primary">
-                    {s.v}
-                  </p>
+                  <p className="pixel-swap text-2xl font-bold text-primary">{s.v}</p>
                   <p className="mt-1 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
                     {s.l}
                   </p>

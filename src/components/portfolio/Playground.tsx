@@ -1,4 +1,7 @@
+"use client";
+
 import { useState } from "react";
+
 import { Badge, PixelWindow, SectionTitle } from "./PixelWindow";
 
 const assets = [
@@ -11,10 +14,7 @@ export function Playground() {
   const [cart, setCart] = useState<string[]>([]);
   const [checkedOut, setCheckedOut] = useState(false);
 
-  const total = cart.reduce(
-    (sum, id) => sum + (assets.find((a) => a.id === id)?.price ?? 0),
-    0,
-  );
+  const total = cart.reduce((sum, id) => sum + (assets.find((a) => a.id === id)?.price ?? 0), 0);
 
   return (
     <section id="playground" className="grid-bg border-b border-border">
@@ -45,9 +45,7 @@ export function Playground() {
 
           <PixelWindow title="cart_drawer" accent>
             {cart.length === 0 ? (
-              <p className="font-mono text-xs text-muted-foreground">
-                Cart empty. Insert coin.
-              </p>
+              <p className="font-mono text-xs text-muted-foreground">Cart empty. Insert coin.</p>
             ) : (
               <ul className="space-y-2">
                 {cart.map((id) => {

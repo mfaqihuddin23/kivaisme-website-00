@@ -15,13 +15,7 @@ export function PixelWindow({
   accent?: boolean;
 }) {
   return (
-    <div
-      className={cn(
-        "bg-card",
-        accent ? "pixel-border-brand" : "pixel-border",
-        className,
-      )}
-    >
+    <div className={cn("bg-card", accent ? "pixel-border-brand" : "pixel-border", className)}>
       <div className="flex items-center gap-2 border-b border-border bg-secondary px-3 py-2">
         <div className="flex gap-1.5">
           <span className="h-2.5 w-2.5 bg-muted-foreground" />
@@ -31,9 +25,7 @@ export function PixelWindow({
         <span className="min-w-0 flex-1 truncate font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
           {title}
         </span>
-        <span className="shrink-0 font-mono text-[11px] text-muted-foreground">
-          [—] [口] [X]
-        </span>
+        <span className="shrink-0 font-mono text-[11px] text-muted-foreground">[—] [口] [X]</span>
       </div>
       <div className={cn("p-4", bodyClassName)}>{children}</div>
     </div>

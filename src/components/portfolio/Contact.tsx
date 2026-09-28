@@ -1,4 +1,7 @@
+"use client";
+
 import { useEffect, useState } from "react";
+
 import { PixelWindow, SectionTitle } from "./PixelWindow";
 
 function LocalTime() {
@@ -22,8 +25,7 @@ function LocalTime() {
 
 const field =
   "w-full border border-border bg-background px-3 py-2 font-mono text-xs text-foreground outline-none focus:border-primary";
-const label =
-  "mb-1 block font-mono text-[10px] uppercase tracking-widest text-muted-foreground";
+const label = "mb-1 block font-mono text-[10px] uppercase tracking-widest text-muted-foreground";
 
 export function Contact() {
   const [sent, setSent] = useState(false);
@@ -50,15 +52,21 @@ export function Contact() {
               className="grid gap-4 sm:grid-cols-2"
             >
               <div>
-                <label className={label} htmlFor="name">Name</label>
+                <label className={label} htmlFor="name">
+                  Name
+                </label>
                 <input id="name" required className={field} />
               </div>
               <div>
-                <label className={label} htmlFor="email">Email</label>
+                <label className={label} htmlFor="email">
+                  Email
+                </label>
                 <input id="email" type="email" required className={field} />
               </div>
               <div>
-                <label className={label} htmlFor="type">Project Type</label>
+                <label className={label} htmlFor="type">
+                  Project Type
+                </label>
                 <select id="type" className={field}>
                   <option>Webflow</option>
                   <option>Shopify</option>
@@ -66,7 +74,9 @@ export function Contact() {
                 </select>
               </div>
               <div>
-                <label className={label} htmlFor="budget">Budget Range</label>
+                <label className={label} htmlFor="budget">
+                  Budget Range
+                </label>
                 <select id="budget" className={field}>
                   <option>$3k – $6k</option>
                   <option>$6k – $12k</option>
@@ -75,7 +85,9 @@ export function Contact() {
                 </select>
               </div>
               <div className="sm:col-span-2">
-                <label className={label} htmlFor="message">Message</label>
+                <label className={label} htmlFor="message">
+                  Message
+                </label>
                 <textarea id="message" rows={5} required className={field} />
               </div>
               <button
@@ -106,7 +118,8 @@ export function Contact() {
             LOCAL_TIME: <LocalTime />
           </div>
           <p className="justify-self-start font-mono text-xs text-muted-foreground md:justify-self-end">
-            built with <span className="inline-block animate-heart text-primary">♥</span> &amp; pixels
+            built with <span className="inline-block animate-heart text-primary">♥</span> &amp;
+            pixels
           </p>
         </div>
       </footer>
